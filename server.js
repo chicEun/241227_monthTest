@@ -38,7 +38,7 @@ app.post('/write', (req, res) => {
     console.log(req.body);
 
     boardList.push({
-        id: 1,
+        id: boardList.length ,
         user_id: 'dmsdbwjd7797',
         writer: writer,
         title: title,
