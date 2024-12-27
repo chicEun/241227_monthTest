@@ -1,5 +1,14 @@
 const express = require('express');
+const nunjucks = require('nunjucks');
 const app = express();
+
+app.get('/list', (req, res) => {
+
+})
+app.get('/write',(req,res) => {
+    res
+})
+
 
 const boardList = [
     {
