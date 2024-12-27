@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>list</title>
     <style>
-            * {
+        * {
            padding: 0;
            margin: 0;
        }
-       #container {
+       #board {
            padding: 50px;
        }
        ul,li {
@@ -22,15 +22,18 @@
            display: flex;
            justify-content: center
        }
-    
+       #writebtn {
+            width: 50px;
+            display: flex;
+            padding: 5px 8px;
+            background: lightcoral;
+            color: white;
+            border-radius: 8px;
+            border: 1px solid lightcoral;
+            margin-top: 10px;
+       }
        a {
-        display: flex;
-        padding: 5px 8px;
-        background: lightcoral;
-        color: white;
-        border-radius: 8px;
-        border: 1px solid lightcoral;
-        margin-top: 10px;
+            text-decoration: none;
        }
     </style>
 </head>
@@ -50,7 +53,7 @@
             <li>{{ key.hit }}</li>
         </ul>
         {% endfor %}
-        <a href="/write">글 쓰기</a>
+        <a id="writebtn" href="/write">글 쓰기</a>
     </div>
 </body>
 </html>
