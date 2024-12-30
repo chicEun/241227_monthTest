@@ -24,7 +24,7 @@ const boardList = [
 
 app.get('/list', (req, res) => {
     console.log("나는 나옴??");
-    res.render(path + '/list.html', {
+    res.render('list.html', {
         boardList
     })
 })
@@ -44,11 +44,15 @@ app.post('/write', (req, res) => {
         title: title,
         content: content,
         hit: 0,
-    })
-
-    
+    }) 
+    // view가 아직 구현이 안돼서 리다이렉트를 안 적었음
+    // 그래도 사용자 입장을 고려해서 list로 먼저 리다이렉트 시키는 행동이 있었으면 좋았을 것 같음
+    res.redirect('/list');
 })
 
+app.get('/view',(req, res) => {
+
+})
 
 
 

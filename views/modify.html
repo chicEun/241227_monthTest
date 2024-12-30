@@ -13,9 +13,9 @@
             <li>내용</li>
         </ul>
        <form method="post" action="/modify">
-            <input type="text" name="writer" value="{{ key}}">
-            <input type="text" name="title" value="">
-            <input type="text" name="content" value="">
+            <input type="text" name="writer" value="{{board.writer}}">
+            <input type="text" name="title" value="{{board.title}}">
+            <input type="text" name="content" value="{{board.content}}">
             <button type="submit">글 수정</button>
        </form>
     </div>
