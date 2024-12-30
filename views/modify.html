@@ -12,7 +12,7 @@
             <li>제목</li>
             <li>내용</li>
         </ul>
-       <form method="post" action="/modify">
+       <form method="post" action="/modify{{board.id}}">
             <input type="text" name="writer" value="{{board.writer}}">
             <input type="text" name="title" value="{{board.title}}">
             <input type="text" name="content" value="{{board.content}}">
