@@ -50,23 +50,47 @@ app.post('/write', (req, res) => {
     res.redirect('/list');
 })
 
-app.get('/view',(req, res) => {
-    const { id } = req.query;
+app.get('/view/:id',(req, res) => {
+    const { id } = parseInt(req.params.id);
     const board = boardList.find((value) => value.id === parseInt(id));
     res.render(path +'/view.html', {
         board
     });
-  
 })
 
-app.post('/delete', (req,res)=> {
-    const {id} = req.body;
-    const boardDelete = boardList.findIndex((value) => value.id === parseInt(id))
+app.get('/modify/:id', (req,res) => {
+    const id =  parseInt(req.params.id);
+    const board = boardList.find((value) => value.id === id);
+    res.render(path +'/modify.html',{
+        board
+    })
+} )
 
-    if(boardDelete !== -1) {
-        boardList.splice(boardDelete, 1);
-        res.redirect('list')
+app.post('/modify/:id', (req,res)=> {
+    const id = parseInt(req.params.id);
+    console.log(id);
+    
+    const { writer, title, content } = req.body;
+    const board = boardList.findIndex((value) => value.id === parseInt(id))
+
+    if(board === -1) {
+        res.status(404).send("아이디 못찾..");
     }
+    boardList[board].writer = writer;
+    boardList[board].title =title;
+    boardList[board].content = content;
+    res.redirect(`/view?id=${id}`)
+})
+
+app.post('/delete/:id', (req,res)=> {
+    const id = parseInt(req.params.id);
+    const boardDelete = boardList.findIndex((value) => value.id === id)
+
+    if(boardDelete === -1) {
+        res.status(404).send("아이디 못찾..");
+    }
+    boardList.splice(boardDelete, 1);
+    res.redirect('/list')
 })
 
   app.listen(3000, (req,res) =>{
