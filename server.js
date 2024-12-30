@@ -16,7 +16,7 @@ const boardList = [
       user_id: 'dmsdbwjd7797',
       writer: '은유정',
       title: '241230 월별평가',
-      content: '빨리 끝내고 집가고 싶다!!',
+      content: '으아아아아',
       hit: 0,
     },
   ];
@@ -51,10 +51,23 @@ app.post('/write', (req, res) => {
 })
 
 app.get('/view',(req, res) => {
-
+    const { id } = req.query;
+    const board = boardList.find((value) => value.id === parseInt(id));
+    res.render(path +'/view.html', {
+        board
+    });
+  
 })
 
+app.post('/delete', (req,res)=> {
+    const {id} = req.body;
+    const boardDelete = boardList.findIndex((value) => value.id === parseInt(id))
 
+    if(boardDelete !== -1) {
+        boardList.splice(boardDelete, 1);
+        res.redirect('list')
+    }
+})
 
   app.listen(3000, (req,res) =>{
     console.log("서버 실행");
